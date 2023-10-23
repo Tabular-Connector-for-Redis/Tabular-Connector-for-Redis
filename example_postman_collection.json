@@ -1,0 +1,333 @@
+{
+	"_comment": [
+		"Copyright 2019 VMware, Inc.",
+		"SPDX-License-Identifier: GPL-3.0"
+	],
+	"info": {
+		"_postman_id": "01ac1f5d-0121-46e0-b0bf-9bfda6eb02ac",
+		"name": "Synergy Redis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost",
+			"item": [
+				{
+					"name": "Add Schema",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"table1\",\n    \"columns\": [\n        {\n            \"name\": \"col1_int\",\n            \"datatype\": \"string\",\n            \"sortable\": false\n        },\n        {\n            \"name\": \"col2_string\",\n            \"datatype\": \"string\",\n            \"filterable\": true,\n            \"sortable\": false\n        },\n        {\n            \"name\": \"col3_string\",\n            \"datatype\": \"string\",\n            \"filterable\": true,\n            \"sortable\": false\n        },\n        {\n            \"name\": \"col4_int\",\n            \"datatype\": \"float\",\n            \"filterable\": true,\n            \"sortable\": true\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/schema",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"schema"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Schema",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Schema",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/vi/schema",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vi",
+								"schema"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Full Load",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"col2_string\",\"col1_int\",\"col3_string\",\"col4_int\"\n\"company1\",\"846039907\",AMER,0.0\nProduban,\"111736949\",EMEA,100.0\n\"company3\",\"113434649\",APAC,0.0\nSalt River Project,\"113386138\",AMER,394200.0\nTGW Logistics Group GmbH,\"944969471\",EMEA,0.0\nSNCF,\"114001282\",N/A,11892.68\nDigicert Inc,\"114108037\",AMER,0.0\n\"company8\",\"115810566\",APAC,15570000\nTexas Tech University,\"628074458\",AMER,118100.0\nTGW Logistics Group GmbH,\"944969471\",EMEA,8000.0\nSemperit AG Holding,\"316810203\",EMEA,100.0\nStone Energy,\"116434212\",AMER,0.0\nCALFRAC WELL SERVICES LTD,\"111155042\",AMER,0.0\nPRIME HEALTHCARE SERVICES INC,\"116810827\",AMER,100.0\nNorth East ISD,\"113595544\",AMER,325000.0\nJapan Communication Co.Ltd,\"776344094\",N/A,20000.0\nCDW,\"112636394\",AMER,100.0"
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/schema/table1/load",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"schema",
+								"table1",
+								"load"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/schema/table1/data",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"schema",
+								"table1",
+								"data"
+							],
+							"query": [
+								{
+									"key": "col3_string",
+									"value": "AMER",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data Pagination",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/schema/table1/data",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"schema",
+								"table1",
+								"data"
+							],
+							"query": [
+								{
+									"key": "col3_string",
+									"value": "AMER",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data Filters Search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"searchTerm\": \"Dell\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/schema/table1/data?limit=100",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"schema",
+								"table1",
+								"data"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "100"
+								},
+								{
+									"key": "offset",
+									"value": "7",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data Filters Sorting",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"filters\": [\n    {\n        \"col\": \"col1_int\",\n        \"op\": \"gte\",\n        \"val\": [\n            \"999239248\"\n        ]\n    },{\n        \"col\": \"col1_int\",\n        \"op\": \"lt\",\n        \"val\": [\n            \"999767006\"\n        ]\n    }\n]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/schema/table1/data",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"schema",
+								"table1",
+								"data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Data Check Update",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"filters\": [\n    {\n        \"col\": \"col4_int\",\n        \"op\": \"\",\n        \"val\": [\n            \"1951.99\"\n        ]\n    },{\n        \"col\": \"col1_int\",\n        \"op\": \"gte\",\n        \"val\": [\n            \"998566783\"\n        ]\n    }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/schema/table1/data",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"schema",
+								"table1",
+								"data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Data",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"values\": {\n        \"col2_string\": \"test update\",\n        \"col4_int\": \"2.0\"\n    },\n    \"filters\": [\n    {\n        \"col\": \"col1_int\",\n        \"op\": \"gte\",\n        \"val\": [\n            \"985850540\"\n        ]\n    },{\n        \"col\": \"col1_int\",\n        \"op\": \"lt\",\n        \"val\": [\n            \"985850541\"\n        ]\n    }]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/v1/schema/table1/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"schema",
+								"table1",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Filtered Data",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/v1/schema/table1/data",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"schema",
+								"table1",
+								"data"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

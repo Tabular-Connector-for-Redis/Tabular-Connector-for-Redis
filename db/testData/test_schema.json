@@ -1,0 +1,29 @@
+{
+    "name": "table1",
+    "columns": [
+        {
+            "name": "col1_int",
+            "datatype": "int",
+            "filterable": true,
+            "sortable": true
+        },
+        {
+            "name": "col2_string",
+            "datatype": "string",
+            "filterable": true,
+            "sortable": false
+        },
+        {
+            "name": "col3_string",
+            "datatype": "string",
+            "filterable": true,
+            "sortable": false
+        },
+        {
+            "name": "col4_int",
+            "datatype": "int",
+            "filterable": true,
+            "sortable": true
+        }
+    ]
+}
